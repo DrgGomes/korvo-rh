@@ -11,7 +11,8 @@ export default function ConfiguracoesPage() {
   const [empresaId, setEmpresaId] = useState(null);
   const [carregando, setCarregando] = useState(true);
   const [salvando, setSalvando] = useState(false);
-  const [aviso, setAviso] = useState('');
+    const [aviso, setAviso] = useState('');
+  const [erro, setErro] = useState('');
   const [form, setForm] = useState({
     nome: '',
     cnpj: '',
