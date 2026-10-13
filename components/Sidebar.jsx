@@ -5,18 +5,20 @@ import { usePathname, useRouter } from 'next/navigation';
 import { supabase } from '../lib/supabaseClient';
 
 const itens = [
-  { nome: 'Dashboard', href: '/dashboard', icone: '🏠' },
-  { nome: 'Funcionários', href: '/funcionarios', icone: '👥' },
-  { nome: 'Ponto', href: '/ponto', icone: '⏱️' },
-  { nome: 'Folha', href: '/folha', icone: '📄' },
-  { nome: 'Holerites', href: '/holerites', icone: '🧾' },
-  { nome: 'Relatório', href: '/relatorio', icone: '💳' },
-  { nome: 'Config.', href: '/configuracoes', icone: '⚙️' },
+  { nome: 'Dashboard', href: '/dashboard', icone: '🏠', perfis: ['master', 'gerente', 'financeiro'] },
+  { nome: 'Funcionários', href: '/funcionarios', icone: '👥', perfis: ['master', 'gerente'] },
+  { nome: 'Ponto', href: '/ponto', icone: '⏱️', perfis: ['master', 'gerente', 'financeiro'] },
+  { nome: 'Folha', href: '/folha', icone: '📄', perfis: ['master', 'gerente', 'financeiro'] },
+  { nome: 'Holerites', href: '/holerites', icone: '🧾', perfis: ['master', 'gerente'] },
+  { nome: 'Relatório', href: '/relatorio', icone: '💳', perfis: ['master', 'gerente', 'financeiro'] },
+  { nome: 'Usuários', href: '/usuarios', icone: '🔐', perfis: ['master'] },
+  { nome: 'Config.', href: '/configuracoes', icone: '⚙️', perfis: ['master'] },
 ];
 
 export default function Sidebar({ nome, perfil }) {
   const pathname = usePathname();
   const router = useRouter();
+  const visiveis = itens.filter((i) => !perfil || i.perfis.includes(perfil));
 
   async function sair() {
     await supabase.auth.signOut();
@@ -31,7 +33,7 @@ export default function Sidebar({ nome, perfil }) {
           <div className="text-xs text-gray-500">Controle interno de pagamentos</div>
         </div>
         <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
-          {itens.map((item) => (
+          {visiveis.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -61,7 +63,7 @@ export default function Sidebar({ nome, perfil }) {
           <button onClick={sair} className="text-sm text-red-600 font-medium">Sair</button>
         </div>
         <nav className="flex gap-1 px-3 pb-3 overflow-x-auto">
-          {itens.map((item) => (
+          {visiveis.map((item) => (
             <Link
               key={item.href}
               href={item.href}
