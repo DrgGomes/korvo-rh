@@ -99,6 +99,12 @@ export default function ConfiguracoesPage() {
           </div>
         )}
 
+        {erro && (
+          <div className="mb-5 rounded-xl px-4 py-3 text-sm font-medium bg-red-50 text-red-700 border border-red-200">
+            {erro}
+          </div>
+        )}
+
         <form onSubmit={salvar} className="space-y-6">
           <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
             <h2 className="text-lg font-bold text-gray-900 mb-4">🏢 Dados da empresa</h2>
