@@ -35,21 +35,15 @@ export default function LoginPage() {
       return;
     }
     setCarregando(true);
-    const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
       email,
       password: senha,
-      options: { data: { nome } },
+      options: { data: { nome, empresa: empresa.trim() } },
     });
     if (error) {
       setCarregando(false);
       setErro('Não foi possível criar a conta: ' + error.message);
       return;
-    }
-    if (data?.user) {
-      await supabase.rpc('criar_empresa_e_perfil', {
-        empresa_nome: empresa.trim(),
-        usuario_nome: nome.trim(),
-      });
     }
     const { data: sessao } = await supabase.auth.getSession();
     setCarregando(false);
