@@ -7,6 +7,7 @@ import { supabase } from '../lib/supabaseClient';
 const itens = [
   { nome: 'Dashboard', href: '/dashboard', icone: '🏠', perfis: ['master', 'gerente', 'financeiro'] },
   { nome: 'Funcionários', href: '/funcionarios', icone: '👥', perfis: ['master', 'gerente'] },
+  { nome: 'Entrada rápida', href: '/entrada-rapida', icone: '⚡', perfis: ['master', 'gerente'] },
   { nome: 'Ponto', href: '/ponto', icone: '⏱️', perfis: ['master', 'gerente', 'financeiro'] },
   { nome: 'Folha', href: '/folha', icone: '📄', perfis: ['master', 'gerente', 'financeiro'] },
   { nome: 'Holerites', href: '/holerites', icone: '🧾', perfis: ['master', 'gerente'] },
