@@ -13,6 +13,7 @@ const itens = [
   { nome: 'Holerites', href: '/holerites', icone: '🧾', perfis: ['master', 'gerente'] },
   { nome: 'Relatório', href: '/relatorio', icone: '💳', perfis: ['master', 'gerente', 'financeiro'] },
   { nome: 'Usuários', href: '/usuarios', icone: '🔐', perfis: ['master'] },
+  { nome: 'Testes', href: '/testes', icone: '🧪', perfis: ['master'] },
   { nome: 'Config.', href: '/configuracoes', icone: '⚙️', perfis: ['master'] },
 ];
 
